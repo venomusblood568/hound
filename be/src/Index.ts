@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import cors from "cors"
 import "./models";
 import "./workers/worker";
+import apiRouter from "./routes";
+
 dotenv.config()
 
 const app = express()
@@ -16,6 +18,7 @@ app.get("/",(req:Request,res:Response) =>{
     res.status(200).json({Message:"Backend is Running...."})
 })
 
+app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server Running at http://localhost:${PORT}`)
