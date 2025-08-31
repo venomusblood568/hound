@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ArrowRight, Play } from "lucide-react";
 
 interface HeroSectionProps {
@@ -15,10 +15,10 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
             className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${
               isDark
                 ? "bg-gray-800/50 text-gray-300 border border-gray-700/50"
-                : "bg-amber-100 text-amber-800 border border-amber-300"
+                : "bg-[#eaeaea] text-amber-800 border border-orange-500"
             }`}
           >
-            ✨ Modern & Minimal
+            ⚡ Always Watching, Always Ready
           </div>
 
           {/* Main Headline */}
@@ -27,15 +27,14 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
               isDark ? "text-white" : "text-amber-900"
             }`}
           >
-            Simple.
             <span
-              className={`block ${
+              className={`bg-gradient-to-r ${
                 isDark
-                  ? "bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
-                  : "bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent"
-              }`}
+                  ? "from-white to-gray-300"
+                  : "from-amber-700 to-orange-600"
+              } bg-clip-text text-transparent`}
             >
-              Beautiful.
+              Monitor. Detect. Alert.
             </span>
           </h1>
 
@@ -45,8 +44,8 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
               isDark ? "text-gray-400" : "text-amber-700"
             }`}
           >
-            Clean design meets powerful functionality. Built for simplicity,
-            designed for impact.
+            Hound sniffs out downtime before it bites. <br /> Simple, fast, and built
+            for developers who hate surprises.
           </p>
 
           {/* CTA Buttons */}
@@ -61,8 +60,8 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
               Get Started
               <ArrowRight className="inline-block ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
-
-            <button
+            <a
+              href="#features"
               className={`group flex items-center px-8 py-3 rounded-lg font-medium transition-all duration-300 border ${
                 isDark
                   ? "bg-transparent hover:bg-white/10 text-white border-gray-600 hover:border-white"
@@ -71,7 +70,7 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
             >
               <Play className="w-5 h-5 mr-2 transition-transform group-hover:scale-110" />
               Learn More
-            </button>
+            </a>
           </div>
 
           {/* Stats */}

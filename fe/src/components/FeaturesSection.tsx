@@ -1,5 +1,4 @@
-import React from "react";
-import { Zap, Layers, Smartphone } from "lucide-react";
+import { Zap, Layers, Settings } from "lucide-react";
 
 interface FeaturesSectionProps {
   isDark: boolean;
@@ -10,35 +9,35 @@ export default function FeaturesSection({ isDark }: FeaturesSectionProps) {
     {
       icon: Zap,
       title: "Fast",
-      description: "Optimized for speed and performance.",
+      description: "Real-time monitoring with alerts the moment downtime hits.",
     },
     {
       icon: Layers,
       title: "Clean",
-      description: "Minimal design with maximum impact.",
+      description:
+        "Minimal design, clear insights — no clutter, just what matters.",
     },
     {
-      icon: Smartphone,
-      title: "Responsive",
-      description: "Works perfectly on every device.",
+      icon: Settings,
+      title: "Simple",
+      description: "Easy to set up and start monitoring in minutes.",
     },
   ];
 
   return (
     <section
-      className={`py-24 px-4 sm:px-6 lg:px-8 relative ${
-        isDark ? "bg-gray-900/30" : "bg-amber-50/30"
-      }`}
+      id="features"
+      className="scroll-mt-20 py-16 px-4 sm:px-6 lg:px-8 relative"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${
-              isDark ? "text-white" : "text-amber-900"
+              isDark ? "text-white" : "text-orange-500"
             }`}
           >
-            Why Choose Us
+            Why Choose Hound
           </h2>
 
           <p
@@ -60,14 +59,14 @@ export default function FeaturesSection({ isDark }: FeaturesSectionProps) {
                 className={`group p-8 rounded-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 ${
                   isDark
                     ? "bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/30 hover:border-gray-600"
-                    : "bg-white/70 hover:bg-white border border-amber-200/50 hover:border-amber-300 shadow-lg hover:shadow-xl"
+                    : "bg-white/70 hover:bg-white border border-amber-200/50 hover:border-orange-500 shadow-lg hover:shadow-xl"
                 }`}
               >
                 <div
                   className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
                     isDark
                       ? "bg-white/10 text-white group-hover:bg-white/20"
-                      : "bg-amber-100 text-amber-600 group-hover:bg-amber-200"
+                      : "bg-[#eaeaea] text-amber-600 group-hover:bg-amber-200"
                   }`}
                 >
                   <IconComponent size={28} />

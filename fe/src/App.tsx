@@ -5,12 +5,11 @@ import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSection";
 import AnimatedBackground from "./components/AnimatedBackground";
 import { useTheme } from "./hooks/useTheme";
-import { useMobileMenu } from "./hooks/useMobileMenu";
 import "./App.css";
+import { ProductPreview } from "./components/productPreview";
+
 function App() {
   const { isDark, toggleTheme } = useTheme();
-  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
-
   return (
     <div
       className={`min-h-screen transition-colors duration-500 ${
@@ -23,12 +22,11 @@ function App() {
         <Header
           isDark={isDark}
           toggleTheme={toggleTheme}
-          isMobileMenuOpen={isMobileMenuOpen}
-          toggleMobileMenu={toggleMobileMenu}
         />
 
         <main>
           <HeroSection isDark={isDark} />
+          <ProductPreview />
           <FeaturesSection isDark={isDark} />
         </main>
 

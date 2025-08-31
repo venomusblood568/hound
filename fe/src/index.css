@@ -15,6 +15,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .animate-float {
     animation: float 8s ease-in-out infinite;

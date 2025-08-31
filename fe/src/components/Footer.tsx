@@ -1,5 +1,5 @@
 
-import { Github,Globe } from "lucide-react";
+import { Github ,Globe } from "lucide-react";
 
 
 interface FooterProps {
@@ -10,7 +10,7 @@ export default function Footer({ isDark }: FooterProps) {
   return (
     <footer
       className={`transition-all duration-500 ${
-        isDark ? " border-gray-800" : " border-amber-200"
+        isDark ? " border-gray-800" : " border-gray-300"
       } border-t`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
