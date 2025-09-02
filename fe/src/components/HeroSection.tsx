@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 
 interface HeroSectionProps {
@@ -44,22 +44,26 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
               isDark ? "text-gray-400" : "text-amber-700"
             }`}
           >
-            Hound sniffs out downtime before it bites. <br /> Simple, fast, and built
-            for developers who hate surprises.
+            Hound sniffs out downtime before it bites. <br /> Simple, fast, and
+            built for developers who hate surprises.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              className={`group px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                isDark
-                  ? "bg-white hover:bg-gray-100 text-black"
-                  : "bg-amber-600 hover:bg-amber-700 text-white"
-              }`}
-            >
-              Get Started
-              <ArrowRight className="inline-block ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
+            <Link 
+              to="/login"
+              >
+              <button
+                className={`group px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+                  isDark
+                    ? "bg-white hover:bg-gray-100 text-black"
+                    : "bg-amber-600 hover:bg-amber-700 text-white"
+                }`}
+              >
+                Get Started
+                <ArrowRight className="inline-block ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
             <a
               href="#features"
               className={`group flex items-center px-8 py-3 rounded-lg font-medium transition-all duration-300 border ${
