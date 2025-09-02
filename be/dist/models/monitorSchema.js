@@ -37,10 +37,8 @@ const mongoose_1 = __importStar(require("mongoose"));
 const MonitorSchema = new mongoose_1.Schema({
     userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
     url: { type: String, required: true },
-    name: { type: String, required: true },
+    Projectname: { type: String, required: true },
     active: { type: Boolean, required: true },
-    createdAt: { type: Date, default: Date.now },
     notifyEmail: { type: String, required: false },
-    notifySlack: { type: String, required: false },
-});
+}, { timestamps: true });
 exports.default = mongoose_1.default.model("Monitor", MonitorSchema);

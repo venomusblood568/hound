@@ -4,9 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const authRoute_1 = __importDefault(require("./authRoute"));
-const monitorRoute_1 = __importDefault(require("./monitorRoute"));
+const createmonitor_1 = require("../controllers/monitor/createmonitor");
+const middleware_1 = require("../middlewares/middleware");
 const router = express_1.default.Router();
-router.use("/auth", authRoute_1.default);
-router.use("/monitor", monitorRoute_1.default);
+router.post("/createmonitor", middleware_1.Middleware, createmonitor_1.createMonitor);
 exports.default = router;
