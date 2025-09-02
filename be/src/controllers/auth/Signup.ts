@@ -1,14 +1,14 @@
-import { User } from "../models";
+import { User } from "../../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { Request,Response } from "express";
+import { Request, Response } from "express";
 
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
-if(!JWT_SECRET){
-  throw new Error("JWT_SECRET is not defined in .env file....")
+if (!JWT_SECRET) {
+  throw new Error("JWT_SECRET is not defined in .env file....");
 }
 
 export const signup = async (req: Request, res: Response) => {
@@ -26,8 +26,10 @@ export const signup = async (req: Request, res: Response) => {
       password: hashedPassword,
     });
     const token = jwt.sign({ id: newUser._id }, JWT_SECRET as string);
-    res.status(201).json({message:"User Created", token: token, user: newUser});
+    res
+      .status(201)
+      .json({ message: "User Created", token: token, user: newUser });
   } catch (error) {
-    res.status(500).json({message:"Internal Error", error: error})
+    res.status(500).json({ message: "Internal Error", error: error });
   }
 };
