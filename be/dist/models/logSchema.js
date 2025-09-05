@@ -36,6 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const LogSchema = new mongoose_1.Schema({
     monitorId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Monitor", required: true },
+    userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
     url: { type: String, required: true },
     status: { type: String, enum: ["Up", "Down"], required: true },
     statusCode: { type: Number, default: null },
@@ -43,5 +44,6 @@ const LogSchema = new mongoose_1.Schema({
     errorMessage: { type: String, default: "default" },
     checkAt: { type: Date, default: Date.now }
 });
-LogSchema.index({ monitorId: 1, checkedAt: -1 });
+LogSchema.index({ monitorId: 1, checkAt: -1 });
+LogSchema.index({ userId: 1, checkAt: -1 });
 exports.default = mongoose_1.default.model("Log", LogSchema);

@@ -2,6 +2,7 @@ import mongoose,{Schema,Document} from "mongoose";
 
 export interface Ilog extends Document{
     monitorId: mongoose.Types.ObjectId;
+    userId:mongoose.Types.ObjectId;
     url: string;
     status:"Up"|"Down";
     statusCode: number | null;
@@ -12,6 +13,7 @@ export interface Ilog extends Document{
 
 const LogSchema = new Schema <Ilog> ({
     monitorId: {type: Schema.Types.ObjectId, ref:"Monitor", required: true},
+    userId:{type:Schema.Types.ObjectId, ref:"User", required: true},
     url : {type: String, required: true},
     status : {type: String, enum: ["Up","Down"],required:true},
     statusCode: {type:Number, default: null},
@@ -20,6 +22,7 @@ const LogSchema = new Schema <Ilog> ({
     checkAt:{type:Date, default:Date.now}
 })
 
-LogSchema.index({monitorId:1, checkedAt: -1});
+LogSchema.index({monitorId:1, checkAt: -1});
+LogSchema.index({userId:1, checkAt:-1});
 
 export default mongoose.model<Ilog>("Log", LogSchema);

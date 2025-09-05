@@ -2,7 +2,7 @@ import express, { Request,Response } from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import "./models";
-import "./workers/worker";
+import {runCheck , scheduleChecks} from "./workers/worker"
 import apiRouter from "./routes";
 
 dotenv.config()
@@ -22,4 +22,7 @@ app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server Running at http://localhost:${PORT}`)
+    runCheck();
+    scheduleChecks();
+
 })
