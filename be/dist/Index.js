@@ -8,6 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 require("./models");
 const worker_1 = require("./workers/worker");
+const histroyworker_1 = __importDefault(require("./workers/histroyworker"));
 const routes_1 = __importDefault(require("./routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -23,4 +24,5 @@ app.listen(PORT, () => {
     console.log(`Server Running at http://localhost:${PORT}`);
     (0, worker_1.runCheck)();
     (0, worker_1.scheduleChecks)();
+    (0, histroyworker_1.default)();
 });

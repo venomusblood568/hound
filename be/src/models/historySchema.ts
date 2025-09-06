@@ -12,6 +12,7 @@ export interface IHistory extends Document {
   firstChecked: Date;
   lastChecked: Date;
   incidentDurations?: number[]; // in seconds
+  checkAt: Date;
 }
 
 const HistorySchema = new Schema<IHistory>({
@@ -26,6 +27,7 @@ const HistorySchema = new Schema<IHistory>({
   firstChecked: { type: Date, required: true },
   lastChecked: { type: Date, required: true },
   incidentDurations: { type: [Number], default: [] },
+  checkAt:{type:Date, required: true},
 });
 
 HistorySchema.index({ monitorId: 1, date: 1 }, { unique: true });

@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 import "./models";
 import {runCheck , scheduleChecks} from "./workers/worker"
+import startHistoryJob from "./workers/histroyworker";
 import apiRouter from "./routes";
 
 dotenv.config()
@@ -24,5 +25,5 @@ app.listen(PORT, () => {
     console.log(`Server Running at http://localhost:${PORT}`)
     runCheck();
     scheduleChecks();
-
+    startHistoryJob();
 })

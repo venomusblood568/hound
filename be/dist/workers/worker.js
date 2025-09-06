@@ -15,10 +15,10 @@ async function runCheck() {
         // active:true → only monitors user has enabled
         const monitors = await monitorSchema_1.default.find({ active: true });
         if (!monitors.length) {
-            console.log("⚠️ No active monitors found.");
+            console.log("No active monitors found.");
             return;
         }
-        console.log(`🔍 Running checks for ${monitors.length} monitors...`);
+        console.log(`Running checks for ${monitors.length} monitors...`);
         const results = await Promise.all(monitors.map((m) => limit(async () => {
             const check = await (0, checkService_1.checkService)(m.url);
             await logSchema_1.default.create({
@@ -33,10 +33,10 @@ async function runCheck() {
             });
             return { monitorId: m._id, ...check };
         })));
-        console.log("✅ Checks completed:", results);
+        console.log("Checks completed:", results);
     }
     catch (error) {
-        console.error("❌ Worker error:", error);
+        console.error("Worker error:", error);
     }
 }
 function scheduleChecks() {
