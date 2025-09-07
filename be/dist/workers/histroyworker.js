@@ -8,12 +8,12 @@ const logSchema_1 = __importDefault(require("../models/logSchema"));
 const historySchema_1 = __importDefault(require("../models/historySchema"));
 const monitorSchema_1 = __importDefault(require("../models/monitorSchema"));
 function startHistoryJob() {
-    node_cron_1.default.schedule("* * * * *", async () => {
+    node_cron_1.default.schedule("0 1 * * *", async () => {
         console.log(`Running daily history aggregation..`);
         try {
-            // Instead of "yesterday"
-            const today = new Date();
-            const dateStr = today.toISOString().slice(0, 10);
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const dateStr = yesterday.toISOString().slice(0, 10); // YYYY-MM-DD
             // Get all active monitors
             const monitors = await monitorSchema_1.default.find({ active: true });
             for (const monitor of monitors) {
@@ -53,8 +53,7 @@ function startHistoryJob() {
                 });
                 // If still down at end of day, close incident artificially
                 if (currentIncidentStart) {
-                    const duration = (endOfDay.getTime() - currentIncidentStart.getTime()) /
-                        1000;
+                    const duration = (endOfDay.getTime() - currentIncidentStart.getTime()) / 1000;
                     incidentDurations.push(duration);
                 }
                 await historySchema_1.default.findOneAndUpdate({ monitorId: monitor._id, date: dateStr }, {
