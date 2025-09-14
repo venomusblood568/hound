@@ -11,6 +11,7 @@ import "./App.css";
 
 import Login from "./pages/login"; 
 import Signup from "./pages/signup";
+import DashBoard from "./pages/dashboard";
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<DashBoard />} />
+            
           </Routes>
         </main>
       </div>
