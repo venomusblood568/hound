@@ -1,6 +1,9 @@
+import { useState } from "react";
 import SideBar from "../components/sidebar";
 import { TrendingUp, AlertTriangle, Activity, Clock, Plus } from "lucide-react";
+import AddMonitorModal from "../components/addMonitorModel";
 export default function DashBoard() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex flex-col sm:flex-row min-h-screen">
       {/* Sidebar */}
@@ -19,10 +22,13 @@ export default function DashBoard() {
           </p>
 
           {/* Add Monitor Button */}
-          <button className="mt-3 sm:mt-0 flex items-center gap-2 bg-green-700 hover:bg-green-600 active:bg-green-800 transition-colors border border-green-500 rounded-2xl px-4 py-2 text-white font-medium shadow-md">
+          <button
+          onClick={() => setOpen(true)} 
+          className="mt-3 sm:mt-0 flex items-center gap-2 bg-green-700 hover:bg-green-600 active:bg-green-800 transition-colors border border-green-500 rounded-2xl px-4 py-2 text-white font-medium shadow-md">
             <Plus size={18} />
             Add Monitor
           </button>
+          <AddMonitorModal open={open} onClose={() => setOpen(false)}/>
         </div>
         <br />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-gray-200">

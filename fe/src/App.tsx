@@ -12,7 +12,7 @@ import "./App.css";
 import Login from "./pages/login"; 
 import Signup from "./pages/signup";
 import DashBoard from "./pages/dashboard";
-
+import Monitors from "./pages/monitors";
 
 function App() {
   const { isDark, toggleTheme } = useTheme();
@@ -50,7 +50,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<DashBoard />} />
-            
+            <Route path="/monitors" element={<Monitors/>} />
           </Routes>
         </main>
       </div>
